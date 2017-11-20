@@ -21,5 +21,8 @@ r5 = handleanswer(requests, r4,
 r6 = handleanswer(requests, r5,
                   '{"answer":{"type":"VERIFY_PASSWORD","password":"' + sys.argv[2] + '"},"rememberMe":true}')
 
-print(r6.status_code)
-print(r6.text)
+sms = input('Enter SMS Verification code: ')
+r7 = handleanswer(requests, r6, '{"answer":{"type":"SMS_OTP","smsOTP":"' + sms + '"}}')
+
+print(r7.status_code)
+print(r7.text)
